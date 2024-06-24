@@ -34,18 +34,24 @@ class LinkedList {
   }
 
   //insert at given key
-  insertAtGivenKey(key) {
+  insertAtGivenKey(key, data) {
     const newNode = new Node(data);
     if (!this.head) {
       console.log("list can not be empty");
       return;
     }
 
+    if (this.head.data === key) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+
     let current = this.head;
     while (current) {
-      if (current.data === key) {
-        let nodeAtGivenPos = current;
-        current = newNode;
+      if (current.next.data === key) {
+        let nodeAtGivenPos = current.next;
+        current.next = newNode;
         newNode.next = nodeAtGivenPos;
         return;
       }
@@ -167,6 +173,8 @@ myLinkedList.insertAtBeginning(4);
 myLinkedList.insertAtBeginning(5);
 myLinkedList.insertAtBeginning(6);
 myLinkedList.insertAtBeginning(7);
+myLinkedList.printList();
+myLinkedList.insertAtGivenKey(7, 5.5);
 myLinkedList.printList();
 console.log("Reversed List");
 myLinkedList.reverseList();
