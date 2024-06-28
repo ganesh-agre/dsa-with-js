@@ -208,6 +208,13 @@ class BinarySearchTree {
       this.treeSumRecursive(root.right)
     );
   }
+
+  treeSumRecursiveSimplified(root, sum) {
+    if (!root) return 0;
+    sum += root.key;
+    this.treeSumRecursive(root.left, sum);
+    this.treeSumRecursive(root.right, sum);
+  }
 }
 
 const bstTree = new BinarySearchTree();
@@ -227,3 +234,4 @@ console.log(bstTree.breadthFirstTraversal());
 console.log(bstTree.breadthFirstTraversal());
 console.log(bstTree.treeSum());
 console.log(bstTree.treeSumRecursive(bstTree.root));
+console.log(bstTree.treeSumRecursive(bstTree.root, 0));
