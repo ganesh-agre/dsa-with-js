@@ -157,6 +157,7 @@ class BinarySearchTree {
     const values = [];
     const queue = [this.root];
     let node;
+    let deplth = 0;
     while (queue.length > 0) {
       node = queue.shift();
       values.push(node.key);
