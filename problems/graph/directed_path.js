@@ -26,7 +26,7 @@ function findPathRec(graph, start, dest, visited = new Set()) {
   if (visited.has(start)) return;
   visited.add(start);
   for (const neighbour of graph[start]) {
-    return findPathRec(graph, neighbour, dest, visited);
+    if (findPathRec(graph, neighbour, dest, visited)) return true;
   }
   return false;
 }
